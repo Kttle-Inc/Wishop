@@ -6,9 +6,7 @@ This section outlines the versions of the project currently supported with secur
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 2.0.x   | :white_check_mark: |
-| 1.5.x   | :x:                |
-| 1.0.x   | :x:                |
+| 1.0.x   | :white_check_mark: |
 
 **Legend:**
 - `:white_check_mark:` - Actively supported. Security updates will be provided for this version.
