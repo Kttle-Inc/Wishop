@@ -1,6 +1,7 @@
 ## 🐛 Bug Report
 
 **Description:**
+
 A clear and concise description of the issue.
 
 **Steps to Reproduce:**
@@ -14,6 +15,7 @@ A clear and concise description of the issue.
 7. See the error
 
 **Expected Behavior:**
+
 What you expected to happen.
 
 **Affected platforms, OS, and devices:**
@@ -24,6 +26,7 @@ What you expected to happen.
 - Our App Version [e.g. 1.0.3]
 
 **Screenshots:**
+
 If applicable, add screenshots to help explain your problem.
 
 **Additional context**

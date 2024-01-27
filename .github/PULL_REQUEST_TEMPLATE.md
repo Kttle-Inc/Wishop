@@ -1,6 +1,7 @@
 ## 🚀 Pull Request
 
 **Changes Made:**
+
 Briefly describe the changes you made in this pull request.
 
 **Why this PR?**
@@ -10,9 +11,11 @@ Explain the purpose and significance of this pull request.
 Resolves #[issue-number]
 
 **Dev Notes:**
+
 Include any technical notes, considerations, or challenges related to the development.
 
 **Design Notes:**
+
 Provide information about design decisions, UI/UX considerations, or any design-related aspects.
 
 **Checklist:**
