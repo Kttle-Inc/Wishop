@@ -25,7 +25,7 @@ We take the security of our project seriously. If you discover a security vulner
 
 2. **Report the Vulnerability:**
 
-   - Send an email to our [Team Lead](nziranzizadaniel@gmail.com) with a detailed description of the vulnerability. Include information on how to reproduce it and any potential impact.
+   - Send an email to our [Team Lead](mailto:nziranzizadaniel@gmail.com) with a detailed description of the vulnerability. Include information on how to reproduce it and any potential impact.
 
 3. **Response Time:**
 
