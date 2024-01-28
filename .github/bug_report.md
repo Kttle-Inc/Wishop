@@ -18,12 +18,18 @@ A clear and concise description of the issue.
 
 What you expected to happen.
 
-**Affected platforms, OS, and devices:**
+**Desktop (please complete the following information):**
 
-- Device(s): [e.g. Samsung A25, iPhone 12 Pro, Macbook Air,...]
-- OS: [e.g. iOS 14, Android 7, Android 8, ...]
-- Browser & version [e.g. chrome 12, safari]
-- Our App Version [e.g. 1.0.3]
+OS: [e.g. iOS]
+Browser [e.g. chrome, safari]
+Version [e.g. 22]
+
+**Smartphone (please complete the following information):**
+
+Device: [e.g. iPhone6]
+OS: [e.g. iOS8.1]
+Browser [e.g. stock browser, safari]
+Version [e.g. 22]
 
 **Screenshots:**
 
