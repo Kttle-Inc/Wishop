@@ -1,22 +1,60 @@
-# This workflow will triage pull requests and apply a label based on the
-# paths that are modified in the pull request.
-#
-# To use this workflow, you will need to set up a .github/labeler.yml
-# file with configuration.  For more information, see:
-# https://github.com/actions/labeler
+name: Pull Request Labeler
 
-name: Labeler
-on: [pull_request_target]
+on:
+  pull_request:
+    types:
+      - opened
 
 jobs:
   label:
-
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
 
     steps:
-    - uses: actions/labeler@v4
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set default labels
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const labelsToAdd = ["WIP", "Enhancement"];  // Add your default labels here
+            const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
+
+            for (const label of labelsToAdd) {
+              await octokit.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                labels: [label],
+              });
+            }
+
+      - name: Link PR to Project Board
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
+            const projectId = '3';  // This is the Task board project ID
+            const columnName = 'In progress';  // Let's put it in the column 'In progress'
+
+            // Get the project
+            const project = await octokit.rest.projects.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              project_id: projectId,
+            });
+
+            // Get the column ID
+            const column = project.data.columns.find(c => c.name === columnName);
+            const columnId = column ? column.id : null;
+
+            // Add the pull request to the project board column
+            if (columnId) {
+              await octokit.rest.projects.createCard({
+                column_id: columnId,
+                content_id: context.payload.pull_request.id,
+                content_type: 'PullRequest',
+              });
+            } else {
+              console.log('Column ID not found. Unable to link pull request to the project board.');
+            }
