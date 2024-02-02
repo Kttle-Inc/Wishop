@@ -1,6 +1,6 @@
 # Wishop Monorepo
 
-Wishop is an innovative e-commerce platform that redefines the shopping experience. This monorepo structure includes backend and frontend applications developed with NestJS and Next.js, shared libraries for common utilities and database configurations, and uses MongoDB with Mongoose ORM. TypeScript is the primary language, and Tailwind CSS is utilized for styling.
+Wishop is an innovative e-commerce platform that redefines the shopping experience. This monorepo structure includes backend and frontend applications developed with [NestJS](https://nestjs.com) and [Next.JS](https://nextjs.org), shared libraries for common utilities and database configurations, and uses [MongoDB](https://www.mongodb.com) with [Mongoose ODM](https://mongoosejs.com). [TypeScript](https://www.typescriptlang.org) is the primary language, and [Tailwind CSS](https://tailwindui.com) is utilized for styling.
 
 ## Table of Contents
 
@@ -25,6 +25,7 @@ Wishop is an innovative e-commerce platform that redefines the shopping experien
   - [Contributing](#contributing)
   - [Security](#security)
   - [License](#license)
+    - [_Happy coding! We code to change our lives' experience for the better._](#happy-coding-we-code-to-change-our-lives-experience-for-the-better)
 
 ## Getting Started
 
@@ -40,16 +41,18 @@ Make sure you have the following tools installed:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/wishop-monorepo.git
+   git clone https://github.com/Kttle-Inc/Wishop.git
    &&
-   cd wishop-monorepo
+   cd Wishop
    ```
 
 2. **Install dependencies:**
 
    ```bash
-   pnpm install
+   pnpm install --filter=<package>
    ```
+
+   Where <package> is either `web` for frontend or `api` for the backend.
 
 ### Development Setup
 
@@ -71,34 +74,38 @@ To run both the backend and frontend during development, use the following comma
 
 ```bash
 wishop/
-|-- src/
+|-- packages/
 |   |-- api/
-|   |   |-- src/
-|   |   |-- nest-cli.json
-|   |   |-- package.json
+|   |   |-- __tests__/
+|   |   |-- controllers/
+|   |   |-- services/
 |   |   |-- tsconfig.json
-|   |   |-- ...
-|   |
+|   |   |-- package.json
+|
 |   |-- web/
+|   |   |-- __tests__/
 |   |   |-- pages/
+|   |   |-- components/
 |   |   |-- styles/
+|   |   |-- public/
 |   |   |-- next.config.js
 |   |   |-- package.json
-|   |   |-- tsconfig.json
-|   |   |-- ...
 |
 |-- shared/
-|   |-- common/
-|   |   |--
-|   |
-|   |-- database/
-|   |   |--
-|   |
-|   |--
+|   |-- models/
+|   |-- utilities/
+|   |-- constants/
+|   |-- ...
 |
+|-- database/
+|   |-- ...
+|
+|-- tsconfig.base.json
 |-- package.json
-|-- tsconfig.json
-|-- ...
+|-- nest-cli.json
+|-- .gitignore
+|-- .prettierrc
+|-- .eslintrc
 ```
 
 ## Backend (NestJS)
@@ -178,6 +185,6 @@ Please review our [Security Guidelines](SECURITY.md) to understand how to report
 
 This project is licensed under the MIT License - see the [License](LICENSE) file for details.
 
-```bash
-This version replaces `npm`
-```
+---
+
+### _Happy coding! We code to change our lives' experience for the better._
