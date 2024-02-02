@@ -25,7 +25,6 @@ Wishop is an innovative e-commerce platform that redefines the shopping experien
   - [Contributing](#contributing)
   - [Security](#security)
   - [License](#license)
-    - [_Happy coding! We code to change our lives' experience for the better._](#happy-coding-we-code-to-change-our-lives-experience-for-the-better)
 
 ## Getting Started
 
@@ -187,4 +186,4 @@ This project is licensed under the MIT License - see the [License](LICENSE) file
 
 ---
 
-### _Happy coding! We code to change our lives' experience for the better._
+**_Happy coding! We code to change our lives' experience for the better._**
