@@ -29,6 +29,9 @@ jobs:
               });
             }
 
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
       - name: Link PR to Project Board
         uses: actions/github-script@v4
         with:
