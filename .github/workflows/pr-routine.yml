@@ -1,0 +1,89 @@
+name: Pull Request Routines
+
+on:
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  add-labels:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set default labels with color and description
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const labelsToAdd = [
+              { name: "WIP", color: "BBCD64", description: "Work in Progress" },
+              { name: "Enhancement", color: "a2eeef", description: "New feature request or PR submission" }
+            ];
+            const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
+
+            for (const label of labelsToAdd) {
+              // Add label
+              await octokit.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                labels: [label.name],
+              });
+
+              // Set label color
+              await octokit.rest.issues.updateLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                current_name: label.name,
+                color: label.color,
+                description: label.description,
+              });
+            }
+
+  link-to-board:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Link PR to Project Board
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
+            const projectId = '3';  // This is the Task board project ID
+            const columnName = 'In progress';  // Let's put it in the column 'In progress'
+
+            // Get the project
+            const project = await octokit.rest.projects.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              project_id: projectId,
+            });
+
+            // Get the column ID
+            const column = project.data.columns.find(c => c.name === columnName);
+            const columnId = column ? column.id : null;
+
+            // Add the pull request to the project board column
+            if (columnId) {
+              await octokit.rest.projects.createCard({
+                column_id: columnId,
+                content_id: context.payload.pull_request.id,
+                content_type: 'PullRequest',
+              });
+            } else {
+              console.log('Column ID not found. Unable to link pull request to the project board.');
+            }
+
+  mark-as-draft:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mark Pull Request as Draft
+        run: |
+          gh pr edit ${{ github.event.number }} --draft
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
