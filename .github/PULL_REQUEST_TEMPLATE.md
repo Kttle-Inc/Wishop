@@ -5,9 +5,11 @@
 Briefly describe the changes you made in this pull request.
 
 **Why this PR?**
+
 Explain the purpose and significance of this pull request.
 
 **Which issue does it resolve?**
+
 Resolves #[issue-number]
 
 **Dev Notes:**
